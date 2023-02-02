@@ -10,3 +10,4 @@ export const appInit = () => {
   newBtn.render();
   console.log('hola');
 };
+

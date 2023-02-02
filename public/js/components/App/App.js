@@ -1,3 +1,4 @@
+"use strict";
 import Button from '../Button/Button.js';
 const appContainer = document.querySelector('.app-container');
 const btn = new Button('My button', 'submit', appContainer);
@@ -7,3 +8,4 @@ export const appInit = () => {
     newBtn.render();
     console.log('hola');
 };
+

@@ -13,3 +13,4 @@ export default class Component {
         this.element.addEventListener('click', () => { });
     }
 }
+
