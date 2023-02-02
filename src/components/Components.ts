@@ -5,14 +5,19 @@ export default class Component {
   constructor(
     parentElement: HTMLElement | null,
     tag: string,
-    cssClass: string = '',
+    cssClasses: string = '',
   ) {
     this.element = document.createElement(tag);
-    this.element.className = cssClass;
+    this.element.className = cssClasses;
     this.parentElement = parentElement;
   }
 
   render() {
     this.parentElement?.appendChild(this.element);
+    this.element.addEventListener('click', () => {});
+  }
+
+  doAction() {
+    this.element.addEventListener('click', () => {});
   }
 }
