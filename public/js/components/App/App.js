@@ -1,11 +1,9 @@
-"use strict";
 import Button from '../Button/Button.js';
+import Form from '../PersonalDataForm/PersonalDataForm.js';
 const appContainer = document.querySelector('.app-container');
-const btn = new Button('My button', 'submit', appContainer);
-const newBtn = new Button('b', 'button', appContainer);
+const newBtn = new Button('My button', 'button', appContainer);
+const newForm = new Form('Nombre:', 'Apellidos:', appContainer);
 export const appInit = () => {
-    btn.render();
     newBtn.render();
-    console.log('hola');
+    newForm.render();
 };
-

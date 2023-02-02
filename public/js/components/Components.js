@@ -7,10 +7,8 @@ export default class Component {
     render() {
         var _a;
         (_a = this.parentElement) === null || _a === void 0 ? void 0 : _a.appendChild(this.element);
-        this.element.addEventListener('click', () => { });
     }
-    doAction() {
-        this.element.addEventListener('click', () => { });
+    doAction(listener) {
+        this.element.addEventListener('click', listener);
     }
 }
-
