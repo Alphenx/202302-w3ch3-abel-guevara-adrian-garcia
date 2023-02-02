@@ -1,3 +1,5 @@
-import { appInit } from './components/App/App.js';
+import App from './components/App/App.js';
 
-appInit();
+const appContainer = document.querySelector<HTMLElement>('.app-container');
+const app = new App(appContainer);
+app.render();

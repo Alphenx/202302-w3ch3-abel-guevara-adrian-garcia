@@ -9,32 +9,35 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Form_textName, _Form_textLastName;
+var _Form_textName, _Form_textLastName, _Form_submitButton;
+import Button from '../Button/Button.js';
 import Component from '../Components.js';
 export default class Form extends Component {
-    constructor(textName, textLastName, parentElement, cssClasses = '') {
+    constructor(textName, textLastName, parentElement, cssClasses = 'app-container__form') {
         super(parentElement, 'form', cssClasses);
         _Form_textName.set(this, void 0);
         _Form_textLastName.set(this, void 0);
+        _Form_submitButton.set(this, void 0);
         __classPrivateFieldSet(this, _Form_textName, textName, "f");
         __classPrivateFieldSet(this, _Form_textLastName, textLastName, "f");
+        __classPrivateFieldSet(this, _Form_submitButton, new Button('Submit con clase', 'submit', this.element), "f");
     }
     render() {
         super.render();
         this.element.innerHTML = `
-    <form class="app-container__form">
-        <label for="name">${__classPrivateFieldGet(this, _Form_textName, "f")}</label>
-    <input type="text" name="name" id="name" placeholder="Enter your Name" required>
-            <label for="last-name">${__classPrivateFieldGet(this, _Form_textLastName, "f")}</label>
-    <input type="text" name="last-name" id="last-name" placeholder="Enter your Last Name" required>
-    <input type="submit" value="Submit">
-    </form>
+      <label for="name">${__classPrivateFieldGet(this, _Form_textName, "f")}</label>
+      <input type="text" name="nameApp" id="name" placeholder="Enter your Name" required>
+      <label for="last-name">${__classPrivateFieldGet(this, _Form_textLastName, "f")}</label>
+      <input type="text" name="lastName" id="last-name" placeholder="Enter your Last Name" required>
     `;
+        __classPrivateFieldGet(this, _Form_submitButton, "f").render();
     }
-    catchData() {
-        var _a;
-        const data = (_a = document.getElementById('name')) === null || _a === void 0 ? void 0 : _a.nodeValue;
-        alert(data);
+    registerSubmit(listener) {
+        this.element.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const form = event.target;
+            listener(form === null || form === void 0 ? void 0 : form.nameApp.value, form === null || form === void 0 ? void 0 : form.lastName.value);
+        });
     }
 }
-_Form_textName = new WeakMap(), _Form_textLastName = new WeakMap();
+_Form_textName = new WeakMap(), _Form_textLastName = new WeakMap(), _Form_submitButton = new WeakMap();

@@ -1,6 +1,6 @@
 export default class Component {
   protected element: HTMLElement;
-  protected parentElement: HTMLElement | null;
+  #parentElement: HTMLElement | null;
 
   constructor(
     parentElement: HTMLElement | null,
@@ -9,14 +9,22 @@ export default class Component {
   ) {
     this.element = document.createElement(tag);
     this.element.className = cssClasses;
-    this.parentElement = parentElement;
+    this.#parentElement = parentElement;
   }
 
   render() {
-    this.parentElement?.appendChild(this.element);
+    this.#parentElement?.appendChild(this.element);
   }
 
-  doAction(listener: () => void) {
+  registerClick(listener: () => void): void {
     this.element.addEventListener('click', listener);
+  }
+
+  changeClassname(className: string) {
+    this.element.classList.toggle(className);
+  }
+
+  remove() {
+    this.element.remove();
   }
 }
