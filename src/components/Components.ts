@@ -14,10 +14,9 @@ export default class Component {
 
   render() {
     this.parentElement?.appendChild(this.element);
-    this.element.addEventListener('click', () => {});
   }
 
-  doAction() {
-    this.element.addEventListener('click', () => {});
+  doAction(listener: () => void) {
+    this.element.addEventListener('click', listener);
   }
 }
